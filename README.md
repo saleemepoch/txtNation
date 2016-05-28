@@ -37,15 +37,6 @@ composer require saleemepoch/txtnation
 saleemepoch\txtNation\Providers\txtNationServiceProvider::class // Laravel 5.1 or greater
 ```
 
-* Add the alias to your $aliases array in config/app.php file like: 
-
-```
-'txtNation' => 'saleemepoch\txtNation\Facades\txtNation' // Laravel 5
-```
-```
-'txtNation' => saleemepoch\txtNation\Facades\txtNation::class // Laravel 5.1 or greater
-```
-
 * Run the following command to publish configuration:
 
 ```
@@ -91,7 +82,7 @@ return [
 <a name="free-sms"></a>
 * To send a free SMS
 ```
-$message = new txtNation;
+$message = new SMSMessage;
 $result = $message->msisdn('447459831491')->body('Please reply to this message with keyword PENNY!')->senderId('784645')->send();
 ```
 
@@ -132,7 +123,7 @@ public function response(Request $request) {
          
         $keywords = config('txtNation.keywords');
         
-        $message = new txtNation;
+        $message = new SMSMessage;
         $result = $message->msisdn($request->number)
         ->reply(1)
         ->body('Thank you for your business')
