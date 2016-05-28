@@ -50,7 +50,7 @@ class txtNationServiceProvider extends ServiceProvider
 	 */
 	private function registerTxtNation()
 	{
-		$this->app->bing('txtNation', function () {
+		$this->app->bind('txtNation', function () {
 			return new SMSMessage;
 		});
 	}
