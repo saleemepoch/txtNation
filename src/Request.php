@@ -41,6 +41,7 @@ abstract class Request
             'cc' => $this->strUsername,
             'ekey' => $this->strPassword,
             'message' => $this->strBody,
+            'shortcode' => $this->shortcode,
             'title' => $this->strSenderId,
             'network' => $this->strNetwork,
             'value' => $this->fltValue,
