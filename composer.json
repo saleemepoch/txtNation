@@ -3,6 +3,7 @@
 	"description": "A Laravel library to help send free and premium SMS via txtNation. Forked from Marc O'Leary's txtNation Gateway",
 	"keywords": ["laravel", "sms", "mobile", "billing", "phone", "cell", "text", "txtNation"],
 	"time": "2016-05-28",
+	"minimum-stability": "^1.0",
 	"license": "MIT",
 	"authors": [
 		{
