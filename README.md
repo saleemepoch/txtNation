@@ -84,6 +84,13 @@ return [
 ```
 $message = new SMSMessage;
 $result = $message->msisdn('447459831491')->body('Please reply to this message with keyword PENNY!')->senderId('784645')->send();
+
+if ($result->success()){
+    dd('Message sent!');
+} else {
+    dd('Error sending message! Code: ' . $result->getErrorCode() . ' (' . $result->getErrorMessage() . ')');
+}
+
 ```
 
 <a name="premium-sms"></a>
