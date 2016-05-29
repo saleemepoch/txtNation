@@ -40,7 +40,7 @@ class SMSMessage extends Request
 		$config = config('txtNation');
 
 		$this->strUsername = ($strUsername != null) ? $strUsername : $config['username'];
-		$this->strUsername = ($strPassword != null) ? $strPassword : $config['ekey'];
+		$this->strPassword = ($strPassword != null) ? $strPassword : $config['ekey'];
 
 		$this->arrOptions = array_merge($this->arrOptions, $arrOptions);
 
@@ -229,10 +229,19 @@ class SMSMessage extends Request
 			throw new SMSMessageException('MSISDN must be set');
 		}
 
-		if (!$this->strSenderId) {
-			$this->objLogger->addError('Sender ID must be set');
 
-			throw new SMSMessageException('Sender ID must be set');
+
+		if (!$this->strSenderId) {
+
+			$sender_id = config('txtNation')['title'];
+			if (!empty($sender_id))
+				$this->strSenderId = $sender_id;
+
+			if (!$this->strSenderId || empty($this->strSenderId)) {
+				$this->objLogger->addError('Sender ID must be set');
+
+				throw new SMSMessageException('Sender ID must be set');
+			}
 		}
 
 		if (is_null($this->shortcode)) {
